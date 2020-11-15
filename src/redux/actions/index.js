@@ -1,11 +1,10 @@
 import axios from 'axios'
 
-import * as common from './common'
 import * as company from './company'
 import * as employee from './employee'
 import * as project from './project'
 
-const actions = { common, company, employee, project }
+const actions = { company, employee, project }
 
 export default actions
 

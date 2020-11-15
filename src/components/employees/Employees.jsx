@@ -12,29 +12,29 @@ const Employees = ({ projectId, employeesId }) => {
   const dispatch = useDispatch()
 
   const [selectedEmployee, setSelectedEmployee] = useState('')
+  const [willAddEmployee, setWillAddEmployee] = useState(false)
   const [updatedEmployeesId, setUpdatedEmployeesId] = useState([])
 
-  const [willAddEmployee, companiesList, employeesList, projectsList] = useSelector(
+  const [companiesList, employeesList, projectsList] = useSelector(
     ({
-      common: { willAddEmployee },
       companies: { companiesList },
       employees: { employeesList },
       projects: { projectsList }
-    }) => [willAddEmployee, companiesList, employeesList, projectsList],
+    }) => [companiesList, employeesList, projectsList],
     shallowEqual
   )
 
   useEffect(() => {
     updatedEmployeesId.length > 0 &&
       dispatch(actions.employee.addEmployee(projectId, updatedEmployeesId))
-  }, [updatedEmployeesId])
+  }, [dispatch, projectId, updatedEmployeesId])
 
   return (
     <>
       <Wrap className="EMPLOYEES_WRAPPER">
         <strong>
           <span>Employees ({employeesId?.length}):</span>
-          <span className="add" onClick={() => dispatch(actions.common.toggleAddEmployee())}>
+          <span className="add" onClick={() => setWillAddEmployee(!willAddEmployee)}>
             {willAddEmployee ? '-' : '+'} add employee 👨‍🔬
           </span>
         </strong>
