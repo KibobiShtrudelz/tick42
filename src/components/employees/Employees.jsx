@@ -1,4 +1,4 @@
-import { useState, memo } from 'react'
+import { useState, useEffect, memo } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import isEqual from 'lodash.isequal'
 
@@ -12,6 +12,7 @@ const Employees = ({ projectId, employeesId }) => {
   const dispatch = useDispatch()
 
   const [selectedEmployee, setSelectedEmployee] = useState('')
+  const [updatedEmployeesId, setUpdatedEmployeesId] = useState([])
 
   const [willAddEmployee, companiesList, employeesList, projectsList] = useSelector(
     ({
@@ -22,6 +23,11 @@ const Employees = ({ projectId, employeesId }) => {
     }) => [willAddEmployee, companiesList, employeesList, projectsList],
     shallowEqual
   )
+
+  useEffect(() => {
+    updatedEmployeesId.length > 0 &&
+      dispatch(actions.employee.addEmployee(projectId, updatedEmployeesId))
+  }, [updatedEmployeesId])
 
   return (
     <>
@@ -49,9 +55,9 @@ const Employees = ({ projectId, employeesId }) => {
               disabled={selectedEmployee.length === 0}
               onClick={e => {
                 if (e) {
-                  const updatedEmployeesId = employeesId
-                  updatedEmployeesId.push(selectedEmployee)
-                  dispatch(actions.employee.addEmployee(projectId, updatedEmployeesId))
+                  const newList = employeesId
+                  newList.push(selectedEmployee)
+                  setUpdatedEmployeesId(newList)
                 }
               }}
             >
