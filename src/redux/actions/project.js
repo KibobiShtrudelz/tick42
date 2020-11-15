@@ -22,7 +22,6 @@ export const getProjectById = async id => {
 }
 
 export const changeProjectNameById = (id, newName) => dispatch => {
-  console.log('newName', newName)
   dispatch({ type: actionTypes.projects.CHANGE_PROJECT_NAME_FETCHING })
 
   checkStatus(
@@ -32,7 +31,6 @@ export const changeProjectNameById = (id, newName) => dispatch => {
     actionTypes.projects.CHANGE_PROJECT_NAME_ERROR,
     dispatch,
     { name: newName }
-    // dispatch(getProjects())
   )
 }
 

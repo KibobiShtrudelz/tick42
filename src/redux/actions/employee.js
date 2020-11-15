@@ -15,7 +15,6 @@ export const getEmployees = () => dispatch => {
 }
 
 export const addEmployee = (projectId, newList) => dispatch => {
-  console.log('addEmployee() newList', newList)
   dispatch({ type: actionTypes.projects.ADD_EMPLOYEE_TO_PROJECT_FETCHING })
 
   checkStatus(

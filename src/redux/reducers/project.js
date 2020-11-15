@@ -55,7 +55,6 @@ const projects = (state = initialState, action) => {
       }
 
     case actionTypes.projects.ADD_EMPLOYEE_TO_PROJECT_SUCCESS:
-      console.log('add employee:', action.payload)
       return {
         ...state,
         isFetching: false
