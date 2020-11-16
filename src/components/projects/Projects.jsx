@@ -3,6 +3,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import isEqual from 'lodash.isequal'
 
 import Project from './project'
+import NewProjectForm from './newProjectForm'
 
 import actions from '../../redux/actions'
 
@@ -10,11 +11,15 @@ import { Wrap } from './projects.styled'
 
 const Projects = ({ companyId }) => {
   const [selectedCompanyProjects, setSelectedCompanyProjects] = useState([])
+  console.log('selectedCompanyProjects', selectedCompanyProjects)
 
   const dispatch = useDispatch()
 
-  const [projectsList] = useSelector(
-    ({ projects: { projectsList } }) => [projectsList],
+  const [projectsList, newProjectFormCallerId] = useSelector(
+    ({ common: { newProjectFormCallerId }, projects: { projectsList } }) => [
+      projectsList,
+      newProjectFormCallerId
+    ],
     shallowEqual
   )
 
@@ -30,14 +35,23 @@ const Projects = ({ companyId }) => {
   }, [companyId, projectsList])
 
   return (
-    <Wrap className="PROJECTS_WRAPPER">
+    <Wrap>
       <h3>Projects ({selectedCompanyProjects?.length}):</h3>
+
+      <button
+        className="create-project-btn"
+        onClick={() => dispatch(actions.common.toggleNewProjectForm(companyId))}
+      >
+        Create project
+      </button>
+
+      {newProjectFormCallerId === companyId && <NewProjectForm companyId={companyId} />}
 
       <div>
         <ol>
           {selectedCompanyProjects?.map(project => (
             <li key={project.id}>
-              <Project {...project} />
+              <Project {...project} />{' '}
             </li>
           ))}
         </ol>

@@ -19,6 +19,15 @@ const Project = ({ id, name, department, employeesId }) => {
       {isProjectSelected && (
         <ProjectDetails>
           <div>
+            <button
+              className="delete"
+              onClick={() => dispatch(actions.project.deleteProjectById(id))}
+            >
+              Delete Project
+            </button>
+          </div>
+
+          <div>
             <span>Department:</span>
             <b>
               <span>{department}</span>

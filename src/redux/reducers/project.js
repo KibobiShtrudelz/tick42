@@ -34,7 +34,6 @@ const projects = (state = initialState, action) => {
         isFetching: true
       }
 
-    // case actionTypes.projects.ADD_EMPLOYEE_TO_PROJECT_SUCCESS:
     case actionTypes.projects.CHANGE_PROJECT_NAME_SUCCESS:
     case actionTypes.employees.REMOVE_EMPLOYEE_FROM_PROJECT_SUCCESS:
       const updatedList = state.projectsList.map(p => {
@@ -51,13 +50,15 @@ const projects = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
+        error: '',
         projectsList: updatedList
       }
 
     case actionTypes.projects.ADD_EMPLOYEE_TO_PROJECT_SUCCESS:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
+        error: ''
       }
 
     case actionTypes.projects.CHANGE_PROJECT_NAME_ERROR:
@@ -66,6 +67,56 @@ const projects = (state = initialState, action) => {
         isFetching: false,
         error: action.error
       }
+
+    case actionTypes.projects.CREATE_PROJECT_FETCHING: {
+      return {
+        ...state,
+        isFetching: true
+      }
+    }
+
+    case actionTypes.projects.CREATE_PROJECT_SUCCESS: {
+      return {
+        ...state,
+        isFetching: false,
+        error: '',
+        projectsList: [...state.projectsList, action.payload]
+      }
+    }
+
+    case actionTypes.projects.CREATE_PROJECT_ERROR: {
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
+      }
+    }
+
+    case actionTypes.projects.DELETE_PROJECT_FETCHING: {
+      return {
+        ...state,
+        isFetching: true
+      }
+    }
+
+    case actionTypes.projects.DELETE_PROJECT_SUCCESS: {
+      const newList = state.projectsList.filter(project => project.id !== action.projectId)
+
+      return {
+        ...state,
+        isFetching: false,
+        error: '',
+        projectsList: newList
+      }
+    }
+
+    case actionTypes.projects.DELETE_PROJECT_ERROR: {
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
+      }
+    }
 
     default:
       return state

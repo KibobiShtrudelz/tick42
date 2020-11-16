@@ -1,14 +1,34 @@
 import styled from 'styled-components'
 
 export const Wrap = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
 
   & > h3 {
     margin: 1rem 0;
   }
 
   & > div {
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
+
+    &.add-area {
+      & > strong {
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 1rem;
+
+        & > span {
+          &.add {
+            cursor: pointer;
+          }
+
+          :first-child {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
   }
 
   & > ol {
@@ -52,5 +72,9 @@ export const SelectWrap = styled.div`
     cursor: pointer;
     border-radius: 0.2rem;
     background-color: #5cdb95;
+
+    :disabled {
+      background-color: grey;
+    }
   }
 `
