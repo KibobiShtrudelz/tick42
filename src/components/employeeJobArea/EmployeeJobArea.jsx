@@ -1,6 +1,5 @@
-import { memo, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import isEqual from 'lodash.isequal'
 
 import Spinner from '../spinner'
 import Projects from '../projects'
@@ -29,7 +28,7 @@ const EmployeeJobArea = ({ companyId }) => {
   }, [companyId, companiesAddresses])
 
   return (
-    <Wrap className="EmployeeJobArea_WRAPPER">
+    <Wrap>
       <div className="address-wrapper">
         <h3>Address:</h3>
 
@@ -67,4 +66,4 @@ const EmployeeJobArea = ({ companyId }) => {
   )
 }
 
-export default memo(EmployeeJobArea, (prevProps, nextProps) => isEqual(prevProps, nextProps))
+export default EmployeeJobArea

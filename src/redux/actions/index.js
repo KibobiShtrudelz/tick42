@@ -33,7 +33,6 @@ export const checkStatus = async (
       dispatch({ type: errorType, error: res.data })
     }
   } catch (error) {
-    console.log('error', error)
-    // dispatch({ type: errorType, error })
+    dispatch({ type: errorType, error })
   }
 }

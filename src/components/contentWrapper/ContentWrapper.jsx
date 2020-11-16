@@ -1,5 +1,5 @@
 import { Wrap } from './contentWrapper.styled.js'
 
-const ContentWrapper = ({ children }) => <Wrap className="CONTENT_WRAPPER">{children}</Wrap>
+const ContentWrapper = ({ children }) => <Wrap>{children}</Wrap>
 
 export default ContentWrapper

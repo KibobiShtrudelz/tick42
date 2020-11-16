@@ -13,7 +13,7 @@ const Project = ({ id, name, department, employeesId }) => {
   const dispatch = useDispatch()
 
   return (
-    <Wrap className="PROJECT_WRAPPER">
+    <Wrap>
       <span onClick={e => e && setIsProjectSelected(!isProjectSelected)}>📁 {name}</span>
 
       {isProjectSelected && (

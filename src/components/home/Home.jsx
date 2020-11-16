@@ -3,7 +3,7 @@ import Navigation from '../navigation'
 import { Wrap, NavigationSide } from './home.styled.js'
 
 const Home = () => (
-  <Wrap className="HOME_WRAPPER">
+  <Wrap>
     <NavigationSide>
       <Navigation />
     </NavigationSide>

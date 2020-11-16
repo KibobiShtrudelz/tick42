@@ -43,6 +43,7 @@ export const Form = styled.form`
   button {
     color: #fff;
     border: none;
+    outline: none;
     padding: 0.5rem;
     cursor: pointer;
     max-width: 10rem;

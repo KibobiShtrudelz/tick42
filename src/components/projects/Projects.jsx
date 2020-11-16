@@ -11,7 +11,6 @@ import { Wrap } from './projects.styled'
 
 const Projects = ({ companyId }) => {
   const [selectedCompanyProjects, setSelectedCompanyProjects] = useState([])
-  console.log('selectedCompanyProjects', selectedCompanyProjects)
 
   const dispatch = useDispatch()
 

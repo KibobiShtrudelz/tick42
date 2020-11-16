@@ -1,6 +1,5 @@
-import { useState, useEffect, memo } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import isEqual from 'lodash.isequal'
 
 import Employee from './employee'
 
@@ -33,7 +32,7 @@ const Employees = ({ projectId, employeesId }) => {
 
   return (
     <>
-      <Wrap className="EMPLOYEES_WRAPPER">
+      <Wrap>
         <div className="add-area">
           <strong>
             <span>Employees ({employeesId?.length}):</span>
@@ -95,4 +94,4 @@ const Employees = ({ projectId, employeesId }) => {
   )
 }
 
-export default memo(Employees, (prevProps, nextProps) => isEqual(prevProps, nextProps))
+export default Employees

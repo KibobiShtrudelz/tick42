@@ -20,7 +20,7 @@ const Navigation = () => {
   }, [dispatch])
 
   return (
-    <Wrap className="NAVIGATION_WRAPPER">
+    <Wrap>
       {companiesList?.map(company => (
         <div key={company.id}>
           <Company {...company} />

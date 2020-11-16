@@ -7,7 +7,7 @@ const Company = ({ id, name }) => {
   const [showEmployeeJobArea, setShowEmployeeJobArea] = useState(false)
 
   return (
-    <Wrap className="COMPANY_ITEM">
+    <Wrap>
       <h1 onClick={e => e && setShowEmployeeJobArea(!showEmployeeJobArea)}>📁 {name}</h1>
 
       {showEmployeeJobArea && <EmployeeJobArea companyId={id} />}

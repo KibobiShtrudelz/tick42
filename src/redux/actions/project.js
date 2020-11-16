@@ -72,8 +72,9 @@ export const deleteProjectById = projectId => dispatch => {
   dispatch({ type: actionTypes.projects.DELETE_PROJECT_FETCHING })
 
   axios({
-    url: APIS.employees.addRemoveEmployee(projectId),
-    method: 'DELETE'
+    url: APIS.projects.projectById(projectId),
+    method: 'DELETE',
+    params: { id: projectId }
   })
     .then(res => {
       if (res.status >= 200 && res.status < 400) {
