@@ -10,6 +10,7 @@ import actions from '../../redux/actions'
 import { Wrap } from './employeeJobArea.styled.js'
 
 const EmployeeJobArea = ({ companyId }) => {
+  console.log('companyId', companyId)
   const [selectedCompany, setSelectedCompany] = useState({})
 
   const dispatch = useDispatch()

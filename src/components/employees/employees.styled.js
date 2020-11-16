@@ -3,12 +3,8 @@ import styled from 'styled-components'
 export const Wrap = styled.div`
   position: relative;
 
-  & > h3 {
-    margin: 1rem 0;
-  }
-
   & > div {
-    margin-left: 1rem;
+    margin-bottom: 1rem;
   }
 
   & > ol {
@@ -52,5 +48,9 @@ export const SelectWrap = styled.div`
     cursor: pointer;
     border-radius: 0.2rem;
     background-color: #5cdb95;
+
+    :disabled {
+      background-color: grey;
+    }
   }
 `

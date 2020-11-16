@@ -17,7 +17,8 @@ const Employee = ({
   dateOfBirth,
   projectsList,
   employeesList,
-  companiesList
+  companiesList,
+  onRemove
 }) => {
   const [showDetails, setShowDetails] = useState(false)
   const [showJobAreaDetails, setShowJobAreaDetails] = useState(false)
@@ -121,6 +122,7 @@ const Employee = ({
             if (e) {
               const newList = employeesId?.filter(employeeId => employeeId !== id)
               dispatch(actions.employee.removeEmployee(projectId, newList))
+              // onRemove && onRemove()
             }
           }}
         >
