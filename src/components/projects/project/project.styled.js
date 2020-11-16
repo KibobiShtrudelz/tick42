@@ -6,6 +6,7 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
 
+  width: 100%;
   list-style: circle;
 
   & > span {
@@ -26,6 +27,17 @@ export const ProjectDetails = styled.div`
     justify-content: space-between;
 
     width: 60%;
+
+    button.delete {
+      color: #fff;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      background-color: red;
+      border-radius: 0.2rem;
+      padding: 0.6rem 0.3rem;
+    }
 
     :nth-of-type(3) {
       display: flex;

@@ -1,10 +1,11 @@
 import axios from 'axios'
 
+import * as common from './common'
 import * as company from './company'
 import * as employee from './employee'
 import * as project from './project'
 
-const actions = { company, employee, project }
+const actions = { common, company, employee, project }
 
 export default actions
 
@@ -32,6 +33,7 @@ export const checkStatus = async (
       dispatch({ type: errorType, error: res.data })
     }
   } catch (error) {
-    dispatch({ type: errorType, error })
+    console.log('error', error)
+    // dispatch({ type: errorType, error })
   }
 }

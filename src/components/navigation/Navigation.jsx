@@ -23,7 +23,7 @@ const Navigation = () => {
     <Wrap className="NAVIGATION_WRAPPER">
       {companiesList?.map(company => (
         <div key={company.id}>
-          <Company className="COMPANY_ITEM" {...company} />
+          <Company {...company} />
           <hr />
         </div>
       ))}

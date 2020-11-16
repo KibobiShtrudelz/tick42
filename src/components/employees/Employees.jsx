@@ -24,6 +24,8 @@ const Employees = ({ projectId, employeesId }) => {
     shallowEqual
   )
 
+  const getLastRemovedEmployeeId = eId => setSelectedEmployee(eId)
+
   useEffect(() => {
     updatedEmployeesId.length > 0 &&
       dispatch(actions.employee.addEmployee(projectId, updatedEmployeesId))
@@ -32,12 +34,15 @@ const Employees = ({ projectId, employeesId }) => {
   return (
     <>
       <Wrap className="EMPLOYEES_WRAPPER">
-        <strong>
-          <span>Employees ({employeesId?.length}):</span>
-          <span className="add" onClick={() => setWillAddEmployee(!willAddEmployee)}>
-            {willAddEmployee ? '-' : '+'} add employee 👨‍🔬
-          </span>
-        </strong>
+        <div className="add-area">
+          <strong>
+            <span>Employees ({employeesId?.length}):</span>
+
+            <span className="add" onClick={() => setWillAddEmployee(!willAddEmployee)}>
+              {willAddEmployee ? '-' : '+'} add employee 👨‍🔬
+            </span>
+          </strong>
+        </div>
 
         {willAddEmployee && (
           <SelectWrap>
@@ -58,6 +63,7 @@ const Employees = ({ projectId, employeesId }) => {
                   const newList = employeesId
                   newList.push(selectedEmployee)
                   setUpdatedEmployeesId(newList)
+                  setSelectedEmployee('')
                 }
               }}
             >
@@ -78,6 +84,7 @@ const Employees = ({ projectId, employeesId }) => {
                 projectsList={projectsList}
                 companiesList={companiesList}
                 employeesList={employeesList}
+                getLastRemovedEmployeeId={getLastRemovedEmployeeId}
                 {...employee}
               />
             )

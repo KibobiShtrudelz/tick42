@@ -6,7 +6,7 @@ export const getEmployees = () => dispatch => {
   dispatch({ type: actionTypes.employees.FETCH_EMPLOYEES_FETCHING })
 
   checkStatus(
-    APIS.employees.getEmployees,
+    APIS.employees.root,
     'GET',
     actionTypes.employees.FETCH_EMPLOYEES_SUCCESS,
     actionTypes.employees.FETCH_EMPLOYEES_ERROR,
